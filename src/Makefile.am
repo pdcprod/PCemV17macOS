@@ -125,6 +125,7 @@ pcem_SOURCES += cdrom-ioctl-dummy.c wx-sdl2-display.c
 endif
 
 if OS_MACOSX
+DEFAULT_INCLUDES = -iquote /opt/homebrew/include
 pcem_SOURCES += cdrom-ioctl-osx.c wx-sdl2-display.c
 pcem_CFLAGS += -DPCEM_RENDER_WITH_TIMER -DPCEM_RENDER_TIMER_LOOP
 pcem_CXXFLAGS += -DPCEM_RENDER_WITH_TIMER -DPCEM_RENDER_TIMER_LOOP
@@ -137,7 +138,7 @@ pcem_LDADD += wx.res
 endif
 
 if !HAS_OFF64T
-#pcem_CFLAGS += -Doff64_t=off_t -Dfopen64=fopen -Dfseeko64=fseek -Dftello64=ftell
+pcem_CFLAGS += -Doff64_t=off_t -Dfopen64=fopen -Dfseeko64=fseek -Dftello64=ftell
 endif
 
 if RELEASE_BUILD
